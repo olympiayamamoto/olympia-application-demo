@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>値下申請書｜申請ポータル</title>
-
-  <!-- キャッシュ対策 -->
   <link rel="stylesheet" href="css/style.css?v=20260128">
 </head>
 
 <body class="pink-bg">
 
-  <!-- ★申請画面専用ラッパー -->
   <div class="apply-page">
 
     <!-- ヘッダー -->
@@ -21,25 +18,31 @@
       <h2>値下申請書</h2>
     </div>
 
-    <!-- =========================
-         申請書本体（Excel再現）
-    ========================= -->
+    <!-- 帳票エリア -->
     <div class="sheet-wrapper">
 
       <div class="price-sheet">
 
+        <!-- 帳票画像 -->
         <img
-          src="images/price_down_page1_bw.jpg?v=3"
+          src="images/price_down_page1_bw.jpg?v=4"
           class="sheet-image"
           alt="値下申請書 1ページ目">
+
+        <!-- ===== 入力欄（テスト：売価）===== -->
+        <input
+          type="number"
+          class="sheet-input price-input"
+          placeholder="売価"
+        >
 
       </div>
 
     </div>
 
     <!-- 申請ボタン -->
-    <button class="menu-btn submit-btn" onclick="alert('申請しました（仮）')">
-      申請する
+    <button class="menu-btn submit-btn">
+      申請する（仮）
     </button>
 
   </div>
