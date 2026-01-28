@@ -8,6 +8,9 @@
 
 <body class="pink-bg">
 
+  <!-- ログアウト -->
+  <button class="logout-btn" onclick="logout()">ログアウト</button>
+
   <div class="home-box">
 
     <!-- ユーザー名 -->
@@ -29,8 +32,16 @@
   </div>
 
   <script>
-    document.getElementById("userName").innerText =
-      localStorage.getItem("userName") || "ログインユーザー";
+    const name = localStorage.getItem("userName");
+    if (!name) {
+      location.href = "index.html";
+    }
+    document.getElementById("userName").innerText = name;
+
+    function logout() {
+      localStorage.clear();
+      location.href = "index.html";
+    }
   </script>
 
 </body>
