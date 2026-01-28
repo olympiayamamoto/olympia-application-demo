@@ -3,30 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>ホーム｜申請ポータル</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260128">
 </head>
 
 <body class="pink-bg">
-
-  <!-- ログアウト -->
-  <button class="logout-btn" onclick="logout()">ログアウト</button>
 
   <div class="home-box">
 
     <!-- ユーザー名 -->
     <div id="userName"></div>
 
-    <!-- メニュー -->
-    <button onclick="location.href='price_down.html'">
-      新規申請（値下申請書）
+    <!-- 新規申請 -->
+    <button class="menu-btn" onclick="location.href='price_down.html'">
+      新規申請
     </button>
 
-    <button onclick="alert('今後実装予定')">
+    <!-- 今後拡張予定 -->
+    <button class="menu-btn" onclick="alert('今後実装予定')">
       過去の履歴
     </button>
 
-    <button onclick="alert('今後実装予定')">
+    <button class="menu-btn" onclick="alert('今後実装予定')">
       進捗状況
+    </button>
+
+    <!-- ログアウト（デザイン統一） -->
+    <button class="menu-btn logout" onclick="logout()">
+      ログアウト
     </button>
 
   </div>
