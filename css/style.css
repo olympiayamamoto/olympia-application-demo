@@ -95,7 +95,28 @@ body {
 }
 
 /* =========================
-   汎用ボタン（今後用）
+   ログアウトボタン
+========================= */
+.logout-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  background: #fff;
+  color: #e75480;
+  border: 2px solid #e75480;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #e75480;
+  color: #fff;
+}
+
+/* =========================
+   フォーカス調整
 ========================= */
 button:focus {
   outline: none;
