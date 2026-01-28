@@ -12,22 +12,46 @@
 
   <div class="home-box">
 
-    <!-- ログアウト -->
-    <button class="logout-btn" onclick="logout()">ログアウト</button>
-
     <!-- ヘッダー -->
     <div class="page-header">
-      <span class="back" onclick="location.href='home.html'">← 戻る</span>
-      <h2>値下申請書</h2>
+      <h2>申請ポータル</h2>
     </div>
 
-    <!-- 申請書表示 -->
+    <!-- メニュー -->
+    <div class="menu-area">
+
+      <!-- 新規申請（親） -->
+      <div class="menu-group">
+        <button class="menu-btn" onclick="toggleMenu()">
+          新規申請 ▼
+        </button>
+
+        <div id="submenu" class="submenu">
+          <button class="menu-btn sub" onclick="location.href='price_down.html'">
+            値下申請書
+          </button>
+          <button class="menu-btn sub" onclick="alert('準備中')">
+            書類A
+          </button>
+        </div>
+      </div>
+
+      <!-- ログアウト -->
+      <button class="menu-btn" onclick="logout()">
+        ログアウト
+      </button>
+
+    </div>
+
+    <!-- =========================
+         申請書表示
+    ========================= -->
     <div class="sheet-wrapper">
       <div class="price-sheet">
         <img
           src="images/price_down_page1_bw.jpg?v=2"
           class="sheet-image"
-          alt="値下申請書 1ページ目">
+          alt="値下申請書">
       </div>
     </div>
 
@@ -37,6 +61,18 @@
     </button>
 
   </div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('submenu');
+      menu.classList.toggle('open');
+    }
+
+    function logout() {
+      alert('ログアウトしました（仮）');
+      location.href = 'index.html';
+    }
+  </script>
 
 </body>
 </html>
