@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.pink-bg {
+  background: #f8c8dc;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.login-box h1 {
+  margin-bottom: 24px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #e75480;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
