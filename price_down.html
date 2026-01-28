@@ -2,33 +2,43 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>値下申請書｜申請さん</title>
+  <title>値下申請書｜申請ポータル</title>
+
+  <!-- キャッシュ対策 -->
   <link rel="stylesheet" href="css/style.css?v=20260128">
 </head>
 
 <body class="pink-bg">
 
-  <div class="home-box wide">
+  <!-- ★申請画面専用ラッパー -->
+  <div class="apply-page">
 
     <!-- ヘッダー -->
-    <div class="page-header">
+    <div class="apply-header">
       <button class="menu-btn back-btn" onclick="location.href='home.html'">
-        ← ホームに戻る
+        ← ホームへ戻る
       </button>
       <h2>値下申請書</h2>
     </div>
 
-    <!-- 帳票 -->
+    <!-- =========================
+         申請書本体（Excel再現）
+    ========================= -->
     <div class="sheet-wrapper">
+
       <div class="price-sheet">
+
         <img
-          src="images/price_down_page1_bw.jpg"
+          src="images/price_down_page1_bw.jpg?v=3"
           class="sheet-image"
-          alt="値下申請書">
+          alt="値下申請書 1ページ目">
+
       </div>
+
     </div>
 
-    <button class="submit-btn" onclick="alert('申請しました（仮）')">
+    <!-- 申請ボタン -->
+    <button class="menu-btn submit-btn" onclick="alert('申請しました（仮）')">
       申請する
     </button>
 
