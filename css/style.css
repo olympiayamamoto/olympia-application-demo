@@ -125,3 +125,70 @@ button:focus,
 input:focus {
   outline: none;
 }
+/* =========================
+   申請画面（値下申請書）
+========================= */
+
+.apply-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* ヘッダー */
+.apply-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.apply-header h2 {
+  font-size: 20px;
+  color: #444;
+}
+
+/* 戻るボタン */
+.back-btn {
+  width: auto;
+  padding: 10px 18px;
+  font-size: 14px;
+}
+
+/* =========================
+   帳票エリア
+========================= */
+
+.sheet-wrapper {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+  overflow-x: auto;
+}
+
+/* Excel紙 */
+.price-sheet {
+  position: relative;
+  width: 794px;      /* A4幅 */
+  margin: 0 auto;
+}
+
+/* 帳票画像 */
+.sheet-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* =========================
+   iPad最適化
+========================= */
+@media (min-width: 768px) {
+  .price-sheet {
+    transform: scale(1.05);
+    transform-origin: top center;
+  }
+}
