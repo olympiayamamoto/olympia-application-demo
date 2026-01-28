@@ -32,11 +32,8 @@
   </div>
 
   <script>
-    const name = localStorage.getItem("userName");
-    if (!name) {
-      location.href = "index.html";
-    }
-    document.getElementById("userName").innerText = name;
+    document.getElementById("userName").innerText =
+      localStorage.getItem("userName") || "ログインユーザー";
 
     function logout() {
       localStorage.clear();
