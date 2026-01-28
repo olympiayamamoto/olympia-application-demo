@@ -44,5 +44,32 @@ body {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
+/* ホーム画面 */
+.home-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
+
+/* メニューボタン共通 */
+.home-box button {
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  font-size: 15px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f78fb3, #f368e0);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.home-box button:hover {
+  opacity: 0.85;
+}
+
 
