@@ -1,132 +1,92 @@
-/* =========================
-   共通設定
-========================= */
-* {
-  box-sizing: border-box;
-}
-
+/* 共通 */
 body {
   margin: 0;
-  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
-  background: #f8c8dc;
+  font-family: "Helvetica", "Arial", sans-serif;
 }
 
-/* =========================
-   背景（ピンク）
-========================= */
 .pink-bg {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #ffe6ee;
 }
 
-/* =========================
-   ログイン画面
-========================= */
-.login-box {
-  background: #fff;
-  padding: 44px 36px;
-  border-radius: 24px;
-  width: 340px;
-  text-align: center;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-}
-
-.login-box h1 {
-  margin-bottom: 30px;
-  font-size: 22px;
-  line-height: 1.5;
-  color: #444;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 16px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #f78fb3, #f368e0);
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  border-radius: 999px;
-  cursor: pointer;
-}
-
-/* =========================
-   ホーム画面
-========================= */
 .home-box {
-  background: #fff;
-  padding: 36px 32px;
-  border-radius: 28px;
-  width: 360px;
-  text-align: center;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* ユーザー名 */
-#userName {
-  font-size: 13px;   /* ←少し小さく */
-  color: #888;
+/* ヘッダー */
+.page-header {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-/* メニューボタン */
-.home-box button {
-  width: 100%;
-  margin: 14px 0;
-  padding: 16px;
-  font-size: 15px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+/* メニュー */
+.menu-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-btn {
+  background: #ff7fa8;
   color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.home-box button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+.menu-btn:hover {
+  opacity: 0.9;
 }
 
-/* =========================
-   帳票（Excel再現エリア）
-========================= */
+.menu-btn.sub {
+  background: #ffb3c9;
+  font-size: 15px;
+}
+
+/* サブメニュー */
+.submenu {
+  display: none;
+  padding-left: 10px;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.submenu.open {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 申請書エリア */
 .sheet-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.price-sheet {
+  width: 100%;
+  max-width: 900px;   /* ← ここでサイズ制御 */
+}
+
+.sheet-image {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
   background: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-  transform-origin: top center;
 }
 
-/* =========================
-   iPad最適化（最重要）
-========================= */
-@media (min-width: 768px) {
-  .sheet-wrapper {
-    transform: scale(1.4); /* ★ここが肝 */
-  }
-
-  .home-box {
-    transform: scale(1.15);
-  }
-}
-
-/* =========================
-   フォーカス制御
-========================= */
-button:focus,
-input:focus,
-select:focus {
-  outline: none;
+/* 申請ボタン */
+.submit-btn {
+  width: 100%;
+  background: #ff5c8a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 18px;
+  cursor: pointer;
 }
