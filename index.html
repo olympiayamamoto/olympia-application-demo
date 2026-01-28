@@ -1,179 +1,190 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<title>店舗申請ポータル（デモ）</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8">
+<title>値下申請書</title>
 <style>
-body{font-family:Meiryo,Arial,sans-serif;background:#f5f6f7;margin:0}
-.hidden{display:none}
-.container{max-width:420px;margin:auto;background:#fff;min-height:100vh}
-header{background:#f2a7c6;color:#fff;padding:14px;text-align:center;font-weight:bold}
-section{padding:16px}
-input,select,button,textarea{width:100%;padding:10px;margin:6px 0;font-size:14px}
-button{background:#f2a7c6;color:#fff;border:none;border-radius:6px}
-.menu button{margin-bottom:10px}
-.card{border:1px solid #ddd;border-radius:8px;padding:10px;margin-bottom:8px}
-.small{font-size:12px;color:#666}
+body { font-family: sans-serif; background:#f5f5f5; }
+header { background:#003366; color:#fff; padding:10px; }
+.container { background:#fff; margin:20px auto; padding:20px; width:900px; }
+table { width:100%; border-collapse:collapse; }
+td, th { border:1px solid #999; padding:8px; }
+input, textarea, select { width:100%; }
+.page { display:none; }
+.page.active { display:block; }
+.nav { margin-top:15px; text-align:center; }
+button { padding:8px 20px; margin:5px; }
+.stamp { text-align:center; font-weight:bold; }
+.footer { margin-top:15px; display:flex; justify-content:space-between; }
 </style>
 </head>
+
 <body>
+
+<header>
+  ログイン中：<span id="userName"></span>
+</header>
+
 <div class="container">
-<header>店舗申請ポータル（デモ）</header>
 
-<!-- ログイン -->
-<section id="login">
-  <h3>ログイン</h3>
-  <input id="loginId" placeholder="店舗ID" />
-  <input id="loginPw" type="password" placeholder="パスワード" />
-  <button onclick="login()">ログイン</button>
-</section>
+<h2>値下申請書</h2>
 
-<!-- ホーム -->
-<section id="home" class="hidden">
-  <h3>ホーム</h3>
-  <div class="menu">
-    <button onclick="show('new')">新規申請</button>
-    <button onclick="show('history')">過去の履歴</button>
-    <button onclick="show('status')">進捗状況</button>
-    <button id="adminBtn" class="hidden" onclick="show('admin')">管理画面</button>
-    <button onclick="logout()">ログアウト</button>
+<!-- ページ表示 -->
+<div id="pageInfo"></div>
+
+<!-- ページ1 -->
+<div class="page active">
+<table>
+<tr><th colspan="2">商品情報</th></tr>
+<tr>
+<td>店舗名（自動）</td>
+<td><span id="storeName"></span></td>
+</tr>
+<tr>
+<td>商品名（入力）</td>
+<td><input id="product"></td>
+</tr>
+<tr>
+<td>数量（1〜100）</td>
+<td>
+<select id="qty">
+<option value="">選択</option>
+<script>
+for(let i=1;i<=100;i++){
+ document.write(`<option>${i}</option>`);
+}
+</script>
+</select>
+</td>
+</tr>
+</table>
+</div>
+
+<!-- ページ2 -->
+<div class="page">
+<table>
+<tr><th colspan="2">陳列情報</th></tr>
+<tr>
+<td>陳列位置</td>
+<td>
+<select id="place">
+<option value="">選択</option>
+<option>棚前</option>
+<option>棚後</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>値下理由</td>
+<td><textarea id="reason"></textarea></td>
+</tr>
+</table>
+</div>
+
+<!-- ページ3 -->
+<div class="page">
+<table>
+<tr><th colspan="2">価格</th></tr>
+<tr>
+<td>値下前価格</td>
+<td><input type="number" id="before"></td>
+</tr>
+<tr>
+<td>値下後価格</td>
+<td><input type="number" id="after"></td>
+</tr>
+</table>
+</div>
+
+<!-- ページ4 -->
+<div class="page">
+<table>
+<tr><th colspan="2">備考</th></tr>
+<tr>
+<td colspan="2"><textarea id="note"></textarea></td>
+</tr>
+</table>
+</div>
+
+<!-- ページ5 -->
+<div class="page">
+<table>
+<tr><th colspan="3">承認欄</th></tr>
+<tr>
+<th>AM</th><th>本部</th><th>社長</th>
+</tr>
+<tr>
+<td class="stamp" id="am"></td>
+<td class="stamp" id="hq"></td>
+<td class="stamp" id="president"></td>
+</tr>
+</table>
+</div>
+
+<div class="footer">
+  <div id="pageCount"></div>
+  <div>
+    <button onclick="prev()">前へ</button>
+    <button onclick="next()">次へ</button>
+    <button onclick="submitForm()">申請</button>
   </div>
-</section>
-
-<!-- 新規申請 -->
-<section id="new" class="hidden">
-  <h3>新規申請</h3>
-  <button onclick="openForm('priceDown')">値下申請書</button>
-  <button onclick="show('home')">戻る</button>
-</section>
-
-<!-- 値下申請フォーム -->
-<section id="priceDown" class="hidden">
-  <h3>値下申請書</h3>
-  <div id="formArea"></div>
-  <button onclick="submitForm()">申請</button>
-  <button onclick="show('home')">キャンセル</button>
-</section>
-
-<!-- 履歴 -->
-<section id="history" class="hidden">
-  <h3>過去の履歴</h3>
-  <div id="historyList"></div>
-  <button onclick="exportCSV()">CSV出力</button>
-  <button onclick="show('home')">戻る</button>
-</section>
-
-<!-- 進捗 -->
-<section id="status" class="hidden">
-  <h3>進捗状況</h3>
-  <div id="statusList"></div>
-  <button onclick="show('home')">戻る</button>
-</section>
-
-<!-- 管理画面 -->
-<section id="admin" class="hidden">
-  <h3>管理画面</h3>
-  <div class="card">
-    <b>確認書類</b><br><span class="small">（デモ：一覧表示のみ）</span>
-  </div>
-  <div class="card">
-    <b>ユーザー管理</b><br><span class="small">（店舗ID・管理者区分）</span>
-  </div>
-  <div class="card">
-    <b>書類設定</b><br><span class="small">（フォーム定義・WF設定）</span>
-  </div>
-  <button onclick="show('home')">戻る</button>
-</section>
+</div>
 
 </div>
 
 <script>
-// ===== 設定（ここを編集すれば書類を増やせます） =====
-const formConfig = {
-  priceDown: [
-    {key:'store', label:'店舗名', type:'text'},
-    {key:'product', label:'商品名', type:'text'},
-    {key:'reason', label:'値下理由', type:'textarea'},
-    {key:'before', label:'値下前価格', type:'number'},
-    {key:'after', label:'値下後価格', type:'number'}
-  ]
+const user = {
+ name:"サカエチカ店",
+ role:"user"
 };
 
-// 仮ユーザー
-const users = {
-  'store01':{pw:'pass', admin:false},
-  'admin01':{pw:'admin', admin:true}
-};
+document.getElementById("userName").textContent = user.name;
+document.getElementById("storeName").textContent = user.name;
 
-let currentUser = null;
-let currentForm = null;
+let current = 0;
+const pages = document.querySelectorAll(".page");
 
-function show(id){
-  document.querySelectorAll('section').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-  if(id==='history') renderHistory();
-  if(id==='status') renderStatus();
+function render(){
+ pages.forEach((p,i)=>p.classList.toggle("active",i===current));
+ document.getElementById("pageInfo").textContent = `ページ ${current+1} / 5`;
+ document.getElementById("pageCount").textContent = `${current+1} / 5`;
+}
+render();
+
+function next(){ if(current<4){ save(); current++; render(); } }
+function prev(){ if(current>0){ save(); current--; render(); } }
+
+function save(){
+ const data = {
+ product:product.value,
+ qty:qty.value,
+ place:place.value,
+ reason:reason.value,
+ before:before.value,
+ after:after.value,
+ note:note.value
+ };
+ localStorage.setItem("draft",JSON.stringify(data));
 }
 
-function login(){
-  const id=loginId.value,pw=loginPw.value;
-  if(users[id] && users[id].pw===pw){
-    currentUser=id;
-    show('home');
-    if(users[id].admin) adminBtn.classList.remove('hidden');
-  } else alert('ログイン失敗');
+function load(){
+ const d = JSON.parse(localStorage.getItem("draft")||"{}");
+ product.value=d.product||"";
+ qty.value=d.qty||"";
+ place.value=d.place||"";
+ reason.value=d.reason||"";
+ before.value=d.before||"";
+ after.value=d.after||"";
+ note.value=d.note||"";
 }
-function logout(){location.reload()}
-
-function openForm(name){
-  currentForm=name;
-  const area=document.getElementById('formArea');
-  area.innerHTML='';
-  formConfig[name].forEach(f=>{
-    const el=document.createElement(f.type==='textarea'?'textarea':'input');
-    el.id=f.key; if(f.type!=='textarea') el.type=f.type;
-    el.placeholder=f.label;
-    area.appendChild(el);
-  });
-  show(name);
-}
+load();
 
 function submitForm(){
-  const data={user:currentUser,form:currentForm,status:'申請中',time:new Date().toISOString()};
-  formConfig[currentForm].forEach(f=>data[f.key]=document.getElementById(f.key).value);
-  const list=JSON.parse(localStorage.getItem('apps')||'[]');
-  list.push(data); localStorage.setItem('apps',JSON.stringify(list));
-  alert('申請しました'); show('home');
-}
-
-function renderHistory(){
-  const list=JSON.parse(localStorage.getItem('apps')||'[]');
-  historyList.innerHTML='';
-  list.filter(a=>a.user===currentUser).forEach(a=>{
-    const d=document.createElement('div');d.className='card';
-    d.innerText=a.form+' / '+a.time; historyList.appendChild(d);
-  });
-}
-
-function renderStatus(){
-  const list=JSON.parse(localStorage.getItem('apps')||'[]');
-  statusList.innerHTML='';
-  list.forEach(a=>{
-    const d=document.createElement('div');d.className='card';
-    d.innerText=a.user+' / '+a.form+' / '+a.status; statusList.appendChild(d);
-  });
-}
-
-function exportCSV(){
-  const list=JSON.parse(localStorage.getItem('apps')||'[]');
-  if(!list.length) return;
-  const keys=Object.keys(list[0]);
-  const rows=[keys.join(',')].concat(list.map(r=>keys.map(k=>r[k]).join(',')));
-  const blob=new Blob([rows.join('\n')],{type:'text/csv'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-  a.download='applications.csv';a.click();
+ save();
+ alert("エリアマネージャー確認中として申請されました");
+ document.getElementById("am").textContent="承認";
 }
 </script>
+
 </body>
 </html>
