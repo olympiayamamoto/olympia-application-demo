@@ -39,4 +39,10 @@ body {
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
+/* ユーザー名表示 */
+#userName {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
 }
+
