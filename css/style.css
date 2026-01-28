@@ -192,3 +192,22 @@ input:focus {
     transform-origin: top center;
   }
 }
+/* =========================
+   帳票入力欄（重ね用）
+========================= */
+
+.sheet-input {
+  position: absolute;
+  border: 1px solid #999;
+  background: rgba(255,255,255,0.85);
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* 売価入力（位置調整用・仮） */
+.price-input {
+  top: 220px;   /* ← あとで微調整 */
+  left: 520px; /* ← Excel見ながら調整 */
+  width: 90px;
+}
