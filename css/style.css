@@ -1,75 +1,102 @@
+/* =========================
+   共通設定
+========================= */
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: #f8c8dc;
 }
 
+/* =========================
+   背景（ピンク）
+========================= */
 .pink-bg {
-  background: #f8c8dc;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/* =========================
+   ログイン画面
+========================= */
 .login-box {
   background: #fff;
-  padding: 40px;
-  border-radius: 16px;
+  padding: 40px 32px;
+  border-radius: 20px;
   width: 320px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .login-box h1 {
-  margin-bottom: 24px;
+  margin-bottom: 28px;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #444;
 }
 
 .login-box input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
 .login-box button {
   width: 100%;
-  padding: 12px;
-  background: #e75480;
+  padding: 14px;
+  background: linear-gradient(135deg, #f78fb3, #f368e0);
   border: none;
   color: #fff;
   font-size: 16px;
-  border-radius: 8px;
+  border-radius: 999px;
   cursor: pointer;
-/* ユーザー名表示 */
-#userName {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-/* ホーム画面 */
-.home-box {
-  background: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
-/* メニューボタン共通 */
+/* =========================
+   ホーム画面
+========================= */
+.home-box {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 24px;
+  width: 340px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* ユーザー名 */
+#userName {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 22px;
+}
+
+/* メニューボタン */
 .home-box button {
   width: 100%;
-  margin: 12px 0;
-  padding: 14px;
+  margin: 14px 0;
+  padding: 16px;
   font-size: 15px;
   border: none;
   border-radius: 999px;
-  background: linear-gradient(135deg, #f78fb3, #f368e0);
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   color: #fff;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .home-box button:hover {
-  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-
+/* =========================
+   汎用ボタン（今後用）
+========================= */
+button:focus {
+  outline: none;
+}
