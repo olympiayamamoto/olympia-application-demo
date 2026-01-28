@@ -95,24 +95,26 @@ body {
 }
 
 /* =========================
-   ログアウトボタン
+   ログアウトボタン（統一デザイン）
 ========================= */
 .logout-btn {
   position: fixed;
   top: 16px;
   right: 16px;
-  background: #fff;
-  color: #e75480;
-  border: 2px solid #e75480;
-  padding: 6px 14px;
-  border-radius: 999px;
+
+  /* メニューボタンと同系統 */
+  padding: 8px 18px;
   font-size: 13px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #fff;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .logout-btn:hover {
-  background: #e75480;
-  color: #fff;
+  opacity: 0.85;
 }
 
 /* =========================
