@@ -12,36 +12,23 @@
 
   <div class="home-box">
 
+    <!-- ログアウト -->
+    <button class="logout-btn" onclick="logout()">ログアウト</button>
+
     <!-- ヘッダー -->
     <div class="page-header">
       <span class="back" onclick="location.href='home.html'">← 戻る</span>
       <h2>値下申請書</h2>
     </div>
 
-    <!-- =========================
-         申請書本体（Excel再現）
-    ========================= -->
+    <!-- 申請書表示 -->
     <div class="sheet-wrapper">
-
-      <!-- A4帳票エリア -->
       <div class="price-sheet">
-
-        <!-- 帳票画像（白黒・1ページ目） -->
         <img
-          src="./img/price_down_page1_bw.jpg?v=4"
+          src="images/price_down_page1_bw.jpg?v=2"
           class="sheet-image"
           alt="値下申請書 1ページ目">
-
-        <!--
-          今後ここに重ねるもの
-          ・数値入力
-          ・プルダウン
-          ・承認ハンコ
-          ・ページ番号（1 / 5）
-        -->
-
       </div>
-
     </div>
 
     <!-- 申請ボタン -->
